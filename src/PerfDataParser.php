@@ -22,7 +22,7 @@ class PerfDataParser
                 continue;
             }
             static::extractCheckMultiProperties($label, $ci);
-            $key = $ci->calculateChecksum();
+            $key = json_encode($ci);
             $points = $dataPoints[$key] ?? $dataPoints[$key] = new Measurement($ci, $timestamp);
             $points->addMetric(PerfDataStringParser::parseValueString($valueString, $label));
         }
