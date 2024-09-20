@@ -24,7 +24,6 @@
     },
     "require": {
         "php": "^8.1",
-        "gipfl/json": ">=0.2",
         "imedge/metrics": ">=0.2"
     },
     "require-dev": {
