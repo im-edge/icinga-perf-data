@@ -70,7 +70,7 @@ class PerfDataFile
                 }
                 $ci = new Ci($result['HOSTNAME'], null, null, $tags);
                 // TODO: Pass state and state type?
-                return PerfDataParser::parse($result['HOSTPERFDATA'], $ci, (int) ($result['TIMET'] ?? time()));
+                return PerfDataParser::parse($result['HOSTPERFDATA'] ?? '', $ci, (int) ($result['TIMET'] ?? time()));
 
             case 'SERVICEPERFDATA':
                 foreach (['HOSTNAME', 'SERVICEDESC', 'SERVICECHECKCOMMAND', 'SERVICEPERFDATA'] as $property) {
@@ -90,7 +90,7 @@ class PerfDataFile
 
                 // TODO: Transform check-multi output into instances!!
                 $ci = new Ci($result['HOSTNAME'], $result['SERVICEDESC'], null, $tags);
-                return PerfDataParser::parse($result['SERVICEPERFDATA'], $ci, (int) $result['TIMET'] ?? time());
+                return PerfDataParser::parse($result['SERVICEPERFDATA'] ?? '', $ci, (int) ($result['TIMET'] ?? time()));
         }
 
         throw new InvalidArgumentException(sprintf(

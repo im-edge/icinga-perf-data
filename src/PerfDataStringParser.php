@@ -17,7 +17,7 @@ class PerfDataStringParser
     public static function parseValueString(string $valueString, string $label): Metric
     {
         $parts = str_getcsv($valueString, ';', "'");
-        $metric = static::createDatePointForValue($label, $parts[0]);
+        $metric = static::createDatePointForValue($label, $parts[0] ?? '');
 
         // TODO:
         /*

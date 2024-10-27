@@ -10,9 +10,12 @@ class PerfDataStringList
 
     protected int $length;
 
+    /**
+     * @return array<string, string>
+     */
     public static function split(string $string): array
     {
-        $self = new static($string);
+        $self = new PerfDataStringList($string);
         return $self->extractParts();
     }
 
@@ -22,6 +25,9 @@ class PerfDataStringList
         $this->length = strlen($string);
     }
 
+    /**
+     * @return array<string, string>
+     */
     protected function extractParts(): array
     {
         $this->pos = 0;
